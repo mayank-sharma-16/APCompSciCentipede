@@ -3,7 +3,7 @@ public class CentipedeGameMap extends GameMap {
 
 	
 	public CentipedeGameMap() {
-		add(new Mushroom(Math.random()*100, 0, 0, 0));
+		add(new Mushroom((int)(Math.random()*100), 0, 0, 0));
 		
 	}
 	
