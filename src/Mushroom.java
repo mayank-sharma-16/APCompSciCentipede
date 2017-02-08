@@ -1,8 +1,8 @@
 
 public class Mushroom extends GameObject {
 
-	public Mushroom(double x, double y, double wid, double ht) {
-		super(x, y, wid, ht);
+	public Mushroom(int x, int y, int wid, int ht) {
+		super(x, y, wid, ht, 0, 0);
 		// TODO Auto-generated constructor stub
 	}
 
