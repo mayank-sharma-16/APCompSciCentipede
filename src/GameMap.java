@@ -1,3 +1,4 @@
+import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,12 +13,22 @@ public abstract class GameMap {
 		movers = new ArrayList();
 		openBackgroundImage();
 	}
-
 	
 	public abstract void openBackgroundImage();
-
-
-	public void add(GameObject go) {
+	
+	public void setImage(Image img){
+		backgroundImage = img;
+	}
+	
+	public Image getImage(){
+		return backgroundImage;
+	}
+	
+	public void draw(Graphics g){
+		
+	}
+	
+	public void add(GameObject go){
 		movers.add(go);
 	} 	
 }
