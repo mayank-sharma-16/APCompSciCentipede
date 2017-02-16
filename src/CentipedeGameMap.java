@@ -22,7 +22,7 @@ public class CentipedeGameMap extends GameMap {
 	}
 	
 	private void initializePlayer(){
-		//add()
+		//add(new Player(400,450,));
 	}
 
 	public void draw(Graphics g){
