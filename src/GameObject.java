@@ -55,6 +55,10 @@ public class GameObject implements MovingObject {
 	public void draw(Graphics g){
 		g.drawImage(img, x, y, width, height, null);
 	}
+	
+	public void die(){
+		//if (health = 0)
+	}
 
 
 }

@@ -12,5 +12,7 @@ public class Scorpion extends GameObject {
 		openImage("scorpion");
 	}
 	
+	
+	
 
 }
