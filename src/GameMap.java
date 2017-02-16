@@ -25,7 +25,9 @@ public abstract class GameMap {
 	}
 	
 	public void draw(Graphics g){
-		
+		for(MovingObject mover : movers){
+			mover.draw();
+		}
 	}
 	
 	public void add(GameObject go){

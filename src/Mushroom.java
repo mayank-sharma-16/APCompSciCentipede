@@ -10,4 +10,5 @@ public class Mushroom extends GameObject {
 	public void move() {
 		
 	}
+	
 }

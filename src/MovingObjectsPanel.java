@@ -31,5 +31,6 @@ public class MovingObjectsPanel extends JPanel {
 		super.paintComponent(g);
 		gm.draw(g);
 	}
+	
 
 }
