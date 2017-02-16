@@ -3,7 +3,7 @@ import java.awt.Image;
 import java.awt.Rectangle;
 
 
-public class GameObject implements MovingObject {
+public abstract class GameObject implements MovingObject {
 	private int speed, x,y,width, height, health;
 	//public static final int NORTH = 1, SOUTH = 3, EAST = 2,WEST = 4;
 	
@@ -18,7 +18,6 @@ public class GameObject implements MovingObject {
 		height = ht;
 		this.speed = speed;
 		this.health = health;
-		
 	}
 	
 	@Override
@@ -35,5 +34,8 @@ public class GameObject implements MovingObject {
 		Rectangle rect = new Rectangle(width, height);
 		return rect;
 	}
-
+	
+	public void draw(){
+		
+	}
 }

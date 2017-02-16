@@ -12,8 +12,8 @@ public class MovingObjectsGameLauncher {
 		Map<String,String> environMap= System.getenv();
 		System.out.println(environMap.keySet());
 		
-		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-		MovingObjectsPanel mop = new MovingObjectsPanel(d);
+		//Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+		MovingObjectsPanel mop = new MovingObjectsPanel();
 		gameFrame.add(mop);
 		gameFrame.pack();
 		gameFrame.setVisible(true);
