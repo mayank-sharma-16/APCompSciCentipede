@@ -7,15 +7,14 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-
 public abstract class GameObject implements MovingObject {
-	private int speed, x,y,width, height, health;
-	//public static final int NORTH = 1, SOUTH = 3, EAST = 2,WEST = 4;
-	
-	private int direction;//clockwise from 0 being north
+	protected int speed, x, y, width, height, health;
+	// public static final int NORTH = 1, SOUTH = 3, EAST = 2,WEST = 4;
+
+	protected int direction;// clockwise from 0 being north
 	private Color color;
 	private Image img;
-	
+
 	public GameObject(int x, int y, int wid, int ht, int speed, int health) {
 		this.x = x;
 		this.y = y;
@@ -24,21 +23,22 @@ public abstract class GameObject implements MovingObject {
 		this.speed = speed;
 		this.health = health;
 	}
-	
+
 	@Override
 	public void move() {
-			x += (int) (Math.sin(direction)*(speed));
-			y += (int) (Math.cos(direction)*(speed));
+		x += (int) (Math.sin(Math.toRadians(direction)) * speed);
+		y += (int) (Math.cos(Math.toRadians(direction)) * speed);
 	}
+
 	protected void openImage(String imageName) {
 		Image myImage = null;
-		if (img == null){
+		if (img == null) {
 			try {
-				URL url = getClass().getResource("res/images/" + imageName+ ".jpeg");
+				URL url = getClass().getResource("res/images/" + imageName + ".jpeg");
 				myImage = ImageIO.read(url);
 				System.out.println(myImage);
 			} catch (IOException e) {
-				System.out.println("Problem opening the "+imageName+ ".jpeg");
+				System.out.println("Problem opening the " + imageName + ".jpeg");
 				e.printStackTrace();
 			}
 		}
@@ -52,12 +52,29 @@ public abstract class GameObject implements MovingObject {
 		return rect;
 	}
 
-	public void draw(Graphics g){
-		g.drawImage(img, x, y, width, height, null);
+	public void draw(Graphics g) {
+		g.drawImage(img, getX(), y, width, height, null);
 	}
-	
-	public void die(){
-		//if (health = 0)
+
+	public void die() {
+		// if (health = 0)
+	}
+
+	public int getX() {
+		return x;
+	}
+
+
+	public int getY() {
+		return y;
+	}
+
+	public int getSpeed() {
+		return speed;
+	}
+
+	public int getHealth() {
+		return health;
 	}
 
 }

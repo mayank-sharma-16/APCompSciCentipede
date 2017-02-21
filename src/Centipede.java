@@ -10,6 +10,9 @@ public class Centipede extends GameObject{
 		super(x, y, wid, ht, speed, health);
 		// TODO Auto-generated constructor stub
 		openImage("centipede");
+		
+		direction = 90;
+		
 	}
 	
 
