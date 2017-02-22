@@ -10,9 +10,9 @@ public class Scorpion extends GameObject {
 		super(x, y, wid, ht, speed, health);
 		// TODO Auto-generated constructor stub
 		openImage("scorpion");
+		
+		direction = 90;
+		
 	}
-	
-	
-	
 
 }
