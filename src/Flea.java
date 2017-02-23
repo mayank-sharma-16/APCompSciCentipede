@@ -13,4 +13,10 @@ public class Flea extends GameObject{
 		direction = 180; 
 	}
 
+	@Override
+	protected void onCollide() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

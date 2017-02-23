@@ -15,4 +15,10 @@ public class Scorpion extends GameObject {
 		
 	}
 
+	@Override
+	protected void onCollide() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
