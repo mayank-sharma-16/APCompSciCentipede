@@ -1,5 +1,7 @@
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +9,9 @@ import java.util.List;
 public abstract class GameMap {
 
 	private List<GameObject> gameObjects;
-	Image backgroundImage;
+
+	private Image backgroundImage;
+	private int[][] coordinateGrid;
 	
 	public GameMap() {
 		gameObjects = new ArrayList();
@@ -15,9 +19,13 @@ public abstract class GameMap {
 	}
 	
 	public abstract void openBackgroundImage();
-	
+		
 	public void setImage(Image img){
 		backgroundImage = img;
+	}
+	
+	protected void setCoordSize(int a, int b){
+		coordinateGrid = new int[a][b];
 	}
 	
 	public Image getImage(){
@@ -32,6 +40,16 @@ public abstract class GameMap {
 	
 	public void add(GameObject go){
 		gameObjects.add(go);
+	}
+
+	public void playerMove(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void shoot() {
+		// TODO Auto-generated method stub
+		System.out.println("working");
 	} 	
 	
 	public void clean(){
