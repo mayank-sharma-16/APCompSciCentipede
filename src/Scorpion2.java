@@ -4,13 +4,15 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-public class Flea extends GameObject{
+public class Scorpion2 extends GameObject {
 
-	public Flea(int x, int y, int wid, int ht, int speed, int health) {
+	public Scorpion2(int x, int y, int wid, int ht, int speed, int health) {
 		super(x, y, wid, ht, speed, health);
 		// TODO Auto-generated constructor stub
-		openImage("flea");
-		direction = 180; 
+		openImage("scorpionflipped");
+		
+		direction = 270;
+		
 	}
 
 }

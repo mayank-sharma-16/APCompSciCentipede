@@ -9,6 +9,7 @@ import java.util.List;
 public abstract class GameMap {
 
 	private List<GameObject> gameObjects;
+
 	private Image backgroundImage;
 	private int[][] coordinateGrid;
 	
@@ -32,8 +33,8 @@ public abstract class GameMap {
 	}
 	
 	public void draw(Graphics g){
-		for(GameObject gameObj : gameObjects){
-			gameObj.draw(g);
+		for(GameObject go : gameObjects){
+			go.draw(g);
 		}
 	}
 	
@@ -49,6 +50,14 @@ public abstract class GameMap {
 	public void shoot() {
 		// TODO Auto-generated method stub
 		System.out.println("working");
-		
 	} 	
+	
+	public void clean(){
+		for ( int i = 0; i < gameObjects.size(); i++){
+			if (gameObjects.get(i).getHealth() == 0){
+				gameObjects.remove(i);
+				i--;
+			}
+		}
+	}
 }
