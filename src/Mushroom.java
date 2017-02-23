@@ -28,5 +28,11 @@ public class Mushroom extends GameObject {
 	public void makePoisonous(){
 		poison = true;
 	}
+
+	@Override
+	protected void onCollide() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

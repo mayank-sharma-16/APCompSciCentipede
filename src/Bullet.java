@@ -12,4 +12,10 @@ public class Bullet extends GameObject {
 		openImage("bullet");
 	}
 
+	@Override
+	protected void onCollide() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

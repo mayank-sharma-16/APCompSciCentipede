@@ -11,6 +11,12 @@ public class Player extends GameObject{
 		// TODO Auto-generated constructor stub
 		openImage("player");
 	}
+
+	@Override
+	protected void onCollide() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 
