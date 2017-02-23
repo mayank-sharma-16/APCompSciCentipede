@@ -15,4 +15,10 @@ public class Spiders extends GameObject{
 		// TODO Auto-generated constructor stub
 		openImage("spider");
 	}
+
+	@Override
+	protected void onCollide() {
+		// TODO Auto-generated method stub
+		
+	}
 }

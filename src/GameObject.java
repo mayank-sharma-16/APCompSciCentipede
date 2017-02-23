@@ -24,11 +24,18 @@ public abstract class GameObject implements MovingObject {
 		this.health = health;
 	}
 
+	public void tick(){
+		this.onCollide();
+		this.move();
+	}
+	
 	@Override
 	public void move() {
 		x += (int) (Math.sin(Math.toRadians(direction)) * speed);
 		y += (int) (Math.cos(Math.toRadians(direction)) * speed);
 	}
+	
+	protected abstract void onCollide();
 
 	protected void openImage(String imageName) {
 		Image myImage = null;
@@ -47,16 +54,17 @@ public abstract class GameObject implements MovingObject {
 	@Override
 	public Rectangle getCollisionBox() {
 		// TODO Auto-generated method stub
-		Rectangle rect = new Rectangle(width, height);
+		Rectangle rect = new Rectangle(x + (int) (Math.sin(Math.toRadians(direction)) * speed), 
+				y + (int) (Math.cos(Math.toRadians(direction)) * speed), width, height);
 		return rect;
+	}
+	
+	public boolean checkCollision(GameObject go){
+		return (getCollisionBox().intersects(go.getCollisionBox()));
 	}
 
 	public void draw(Graphics g) {
 		g.drawImage(img, getX(), y, width, height, null);
-	}
-
-	public void die() {
-		// if (health = 0)
 	}
 
 	public int getX() {
