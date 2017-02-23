@@ -30,13 +30,13 @@ public abstract class GameObject implements MovingObject {
 			x += (int) (Math.sin(direction)*(speed));
 			y += (int) (Math.cos(direction)*(speed));
 	}
+	
 	protected void openImage(String imageName) {
 		Image myImage = null;
 		if (img == null){
 			try {
-				URL url = getClass().getResource("res/images/" + imageName+ ".jpeg");
+				URL url = getClass().getResource("images/" + imageName+ ".jpeg");
 				myImage = ImageIO.read(url);
-				System.out.println(myImage);
 			} catch (IOException e) {
 				System.out.println("Problem opening the "+imageName+ ".jpeg");
 				e.printStackTrace();
@@ -59,5 +59,5 @@ public abstract class GameObject implements MovingObject {
 	public void die(){
 		//if (health = 0)
 	}
-
+	
 }
