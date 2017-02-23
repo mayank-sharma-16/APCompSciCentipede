@@ -11,7 +11,6 @@ public abstract class GameMap {
 	private List<GameObject> gameObjects;
 
 	private Image backgroundImage;
-	private int[][] coordinateGrid;
 	
 	public GameMap() {
 		gameObjects = new ArrayList();
@@ -24,12 +23,15 @@ public abstract class GameMap {
 		backgroundImage = img;
 	}
 	
-	protected void setCoordSize(int a, int b){
-		coordinateGrid = new int[a][b];
-	}
-	
 	public Image getImage(){
 		return backgroundImage;
+	}
+	
+	public void tick()
+	{
+		for (GameObject go : gameObjects) {
+			go.tick();
+		}
 	}
 	
 	public void draw(Graphics g){

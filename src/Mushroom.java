@@ -12,7 +12,7 @@ public class Mushroom extends GameObject {
 	public Mushroom(int x, int y, int wid, int ht) {
 		super(x, y, wid, ht, 0, 1);
 		// TODO Auto-generated constructor stub
-		if (poison){
+		if (false){
 			openImage("poisonMushroom");
 		}
 		else{

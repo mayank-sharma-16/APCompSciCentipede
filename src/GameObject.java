@@ -25,7 +25,6 @@ public abstract class GameObject implements MovingObject {
 	}
 
 	public void tick(){
-		this.onCollide();
 		this.move();
 	}
 	
@@ -41,10 +40,10 @@ public abstract class GameObject implements MovingObject {
 		Image myImage = null;
 		if (img == null) {
 			try {
-				URL url = getClass().getResource("images/" + imageName+ ".jpeg");
+				URL url = getClass().getResource("images/" + imageName+ ".jpg");
 				myImage = ImageIO.read(url);
 			} catch (IOException e) {
-				System.out.println("Problem opening the " + imageName + ".jpeg");
+				System.out.println("Problem opening the " + imageName + ".jpg");
 				e.printStackTrace();
 			}
 		}

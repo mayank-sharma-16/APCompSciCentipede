@@ -7,9 +7,9 @@ public class CentipedeGameMap extends GameMap {
 	Player player;
 	
 	public CentipedeGameMap() {
-		setCoordSize(40,30);
 		initializeMushrooms();
 		initializePlayer();
+		initializeCentipede();
 		
 	}
 
@@ -20,17 +20,18 @@ public class CentipedeGameMap extends GameMap {
 			//set a limit here so that player does not spawn on mushroom
 			int x = (int)(Math.random()*40);
 			int y = (int)(Math.random()*30);
-			while(y >= 20){
-				y = (int)(Math.random()*30);
-			}
+			
 			add(new Mushroom(x*20,y*20,20,20));
 			numb++;
 		}
 	}
 	
 	private void initializePlayer(){
-		Player ub = new Player(400,500,20,20,0,1);
 		player = new Player(400, 500, 20, 20, 0, 1);
+	}
+	
+	private void initializeCentipede(){
+		add(new Centipede(20, 20, 20, 20, 1, -1));
 	}
 
 	public void draw(Graphics g){
