@@ -41,9 +41,8 @@ public abstract class GameObject implements MovingObject {
 		Image myImage = null;
 		if (img == null) {
 			try {
-				URL url = getClass().getResource("res/images/" + imageName + ".jpeg");
+				URL url = getClass().getResource("images/" + imageName+ ".jpeg");
 				myImage = ImageIO.read(url);
-				System.out.println(myImage);
 			} catch (IOException e) {
 				System.out.println("Problem opening the " + imageName + ".jpeg");
 				e.printStackTrace();
@@ -84,5 +83,5 @@ public abstract class GameObject implements MovingObject {
 	public int getHealth() {
 		return health;
 	}
-
+	
 }
