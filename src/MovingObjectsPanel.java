@@ -3,12 +3,14 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.color.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.AbstractAction;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
+import javax.swing.Timer;
 
 
 public class MovingObjectsPanel extends JPanel   {
@@ -17,9 +19,11 @@ public class MovingObjectsPanel extends JPanel   {
 	private GameMap gm;
 	private Color backg = new Color(0,0,0);
 	
+	private Timer timer;
+	
 	public MovingObjectsPanel() {
 		this(new Dimension(800,600));
-		this.setUpKeyMappings();
+		
 	}
 	
 	private void setUpKeyMappings() {
@@ -82,7 +86,23 @@ public class MovingObjectsPanel extends JPanel   {
 		defaultDim = dim;
 		this.setPreferredSize(defaultDim);
 		this.setBackground(backg);
+		this.setUpKeyMappings();
+		
+		timer = new Timer(1000 / 30, new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gm.tick();
+				repaint();
+				
+			}
+			
+			
+		});
+		
 		makeGameMap();
+		
+		timer.start();
 	}
 	
 	private void makeGameMap() {
