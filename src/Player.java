@@ -4,20 +4,30 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-public class Player extends GameObject{
+public class Player extends GameObject
+{
 
-	public Player(int x, int y, int wid, int ht, int speed, int health) {
+	public Player(int x, int y, int wid, int ht, int speed, int health)
+	{
 		super(x, y, wid, ht, speed, health);
 		// TODO Auto-generated constructor stub
 		openImage("player");
 	}
 
+	public void setMoving(Vec2 direction, int speed)
+	{
+		this.direction = direction;
+		this.speed = speed;
+	}
+
 	@Override
-	protected void onCollide(GameObject go) {
-		// TODO Auto-generated method stub
-		
+	protected void onCollide(GameObject go)
+	{
+		if (go instanceof Mushroom || go instanceof Border)
+		{
+			speed = 0;
+		}
 	}
 	
 	
-
 }

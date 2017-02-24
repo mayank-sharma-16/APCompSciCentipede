@@ -16,7 +16,7 @@ public class Centipede extends GameObject
 		// TODO Auto-generated constructor stub
 		openImage("centipede");
 		isLeft = false;
-		direction = 90;
+		direction = new Vec2(1, 0);
 		
 	}
 	
@@ -24,17 +24,18 @@ public class Centipede extends GameObject
 	public void tick()
 	{
 		super.tick();
-		if (direction == 180)
+		if (direction.equals(new Vec2(0, 1)));
 		{
 			if (y / height == previousRow + 1)
 			{
+				y = (y / height) * height;
 				if (isLeft)
 				{
-					direction = 270;
+					direction = new Vec2(-1, 0);
 				}
 				else
 				{
-					direction = 90;
+					direction = new Vec2(1, 0);
 				}
 
 			}
@@ -47,7 +48,7 @@ public class Centipede extends GameObject
 	{
 		if (go instanceof Mushroom || go instanceof Border)
 		{
-			direction = 180;
+			direction = new Vec2(0, 1);
 			isLeft = !isLeft;
 			previousRow = y / height;
 		}

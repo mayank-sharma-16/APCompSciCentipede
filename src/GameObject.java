@@ -12,7 +12,7 @@ public abstract class GameObject implements MovingObject
 	protected int speed, x, y, width, height, health;
 	// public static final int NORTH = 1, SOUTH = 3, EAST = 2,WEST = 4;
 
-	protected int direction;// clockwise from 0 degree being north
+	protected Vec2 direction; // unit vector
 	private Color color;
 	private Image img;
 
@@ -20,10 +20,11 @@ public abstract class GameObject implements MovingObject
 	{
 		this.x = x;
 		this.y = y;
-		width = wid;
-		height = ht;
+		this.width = wid;
+		this.height = ht;
 		this.speed = speed;
 		this.health = health;
+		this.direction = new Vec2(0, 0);
 	}
 
 	public void tick()
@@ -34,8 +35,8 @@ public abstract class GameObject implements MovingObject
 	@Override
 	public void move()
 	{
-		x += (int) (Math.sin(Math.toRadians(direction)) * speed);
-		y -= (int) (Math.cos(Math.toRadians(direction)) * speed);
+		x += (int) (direction.getX() * speed);
+		y += (int) (direction.getY() * speed);
 	}
 	
 	protected abstract void onCollide(GameObject go);
@@ -62,8 +63,8 @@ public abstract class GameObject implements MovingObject
 	@Override
 	public Rectangle getCollisionBox()
 	{
-		Rectangle rect = new Rectangle(x + (int) (Math.sin(Math.toRadians(direction)) * speed),
-				y - (int) (Math.cos(Math.toRadians(direction)) * speed), width, height);
+		Rectangle rect = new Rectangle(x + (int) (direction.getX() * speed),
+				y + (int) (direction.getY() * speed), width, height);
 		return rect;
 	}
 	
