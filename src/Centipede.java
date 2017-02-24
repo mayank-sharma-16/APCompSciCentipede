@@ -4,40 +4,53 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-public class Centipede extends GameObject{
+public class Centipede extends GameObject
+{
 
 	private boolean isLeft;
+	private int previousRow;
 	
-	public Centipede(int x, int y, int wid, int ht, int speed, int health) {
+	public Centipede(int x, int y, int wid, int ht, int speed, int health)
+	{
 		super(x, y, wid, ht, speed, health);
-		// TODO Auto-generated constructor stub
 		openImage("centipede");
 		isLeft = false;
-		direction = 90;
+		direction = new Vec2(1, 0);
 		
 	}
 	
 	@Override
-	public void tick(){
+	public void tick()
+	{
 		super.tick();
-		if (direction == 180) {
-			if (y % height == 0) {
-				if (isLeft) {
-					direction = 270;
-				} else {
-					direction = 90;
+		if (direction.equals(new Vec2(0, 1)));
+		{
+			if (y / height == previousRow + 1)
+			{
+				y = (y / height) * height;
+				if (isLeft)
+				{
+					direction = new Vec2(-1, 0);
 				}
-					
+				else
+				{
+					direction = new Vec2(1, 0);
+				}
+
 			}
 		}
 		
 	}
 
 	@Override
-	protected void onCollide() {
-		direction = 180;
-		isLeft = !isLeft;
-		y += 1;
+	protected void onCollide(GameObject go)
+	{
+		if (go instanceof Mushroom || go instanceof Border)
+		{
+			direction = new Vec2(0, 1);
+			isLeft = !isLeft;
+			previousRow = y / height;
+		}
 	}
 	
 
