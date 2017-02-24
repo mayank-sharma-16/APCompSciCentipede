@@ -91,6 +91,14 @@ public class CentipedeGameMap extends GameMap
 		{
 			player.setMoving(dir.normalize(), 5);
 		}
+		
+		
+		if (im.getInput("shoot"))
+		{
+			im.setInput("shoot", false);
+			gameObjects.add(new Bullet(player.getX(), player.getY(), 2, 5, 5, 1));
+		}
+		
 
 	}
 
