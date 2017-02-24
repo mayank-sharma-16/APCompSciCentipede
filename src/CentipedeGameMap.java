@@ -9,7 +9,6 @@ public class CentipedeGameMap extends GameMap
 	public static final int GAME_WIDTH = GRID_WIDTH * GRID_SIZE;
 	public static final int GAME_HEIGHT = GRID_HEIGHT * GRID_SIZE;
 
-	private int LIMIT = 300;
 	private Player player;
 	
 	public CentipedeGameMap(InputManager inputManager)
