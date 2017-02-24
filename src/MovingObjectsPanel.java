@@ -74,7 +74,7 @@ public class MovingObjectsPanel extends JPanel
 		// In this case I mapped the space bar key to the action named "shoot"
 		// Whenever someone hits the Space Bar the action shoot is sent out
 
-		String[] inputNames = {"shoot", "up", "down", "left", "right"};
+		String[] inputNames = {"up", "down", "left", "right"};
 
 		this.getInputMap().put(KeyStroke.getKeyStroke("SPACE"), "shoot");
 
@@ -102,6 +102,8 @@ public class MovingObjectsPanel extends JPanel
 		{
 			inputManager.addInput(name);
 		}
+		
+		inputManager.addInput("shoot");
 
 		//  This associates the command shoot with some action.  In this 
 		// case, the action triggers a shoot command invoked on my GameMap.  In general, whatever 
