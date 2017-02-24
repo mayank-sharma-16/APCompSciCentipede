@@ -72,6 +72,10 @@ public abstract class GameObject implements MovingObject
 	{
 		return (getCollisionBox().intersects(go.getCollisionBox()));
 	}
+	
+	public void hurt(){
+		health -= 1;
+	}
 
 	public void draw(Graphics g)
 	{
