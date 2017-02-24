@@ -88,6 +88,16 @@ public class MovingObjectsPanel extends JPanel
 		this.getInputMap().put(KeyStroke.getKeyStroke("released LEFT"), "released left");
 		this.getInputMap().put(KeyStroke.getKeyStroke("released RIGHT"), "released right");
 
+		this.getInputMap().put(KeyStroke.getKeyStroke("W"), "up");
+		this.getInputMap().put(KeyStroke.getKeyStroke("S"), "down");
+		this.getInputMap().put(KeyStroke.getKeyStroke("A"), "left");
+		this.getInputMap().put(KeyStroke.getKeyStroke("D"), "right");
+
+		this.getInputMap().put(KeyStroke.getKeyStroke("released W"), "released up");
+		this.getInputMap().put(KeyStroke.getKeyStroke("released S"), "released down");
+		this.getInputMap().put(KeyStroke.getKeyStroke("released A"), "released left");
+		this.getInputMap().put(KeyStroke.getKeyStroke("released D"), "released right");
+
 		for (String name : inputNames)
 		{
 			inputManager.addInput(name);

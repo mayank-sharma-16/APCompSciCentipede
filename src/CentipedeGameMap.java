@@ -65,44 +65,32 @@ public class CentipedeGameMap extends GameMap
 	{
 		super.tick();
 
-		int angle = 0;
-		int num = 0;
+		Vec2 dir = Vec2.zero();
 
 		if (im.getInput("up"))
 		{
-			angle += 0;
-			num++;
+			dir.addLocal(0, -1);
 		}
 		if (im.getInput("right"))
 		{
-			angle += 90;
-			num++;
-		}
-		if (im.getInput("left"))
-		{
-			angle -= 90;
-			num++;
+			dir.addLocal(1, 0);
 		}
 		if (im.getInput("down"))
 		{
-			if (angle > 0)
-				angle += 180;
-			else
-				angle -= 180;
-			num++;
+			dir.addLocal(0, 1);
+		}
+		if (im.getInput("left"))
+		{
+			dir.addLocal(-1, 0);
 		}
 
-		if (num == 1)
+		if (dir.equals(Vec2.zero()))
 		{
-			player.setMoving(angle, 5);
-		}
-		else if (num == 2)
-		{
-			player.setMoving(angle / 2, 5);
+			player.setMoving(Vec2.zero(), 0);
 		}
 		else
 		{
-			player.setMoving(0, 0);
+			player.setMoving(dir.normalize(), 5);
 		}
 
 	}

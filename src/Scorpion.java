@@ -11,7 +11,7 @@ public class Scorpion extends GameObject {
 		// TODO Auto-generated constructor stub
 		openImage("scorpion");
 		
-		direction = 90;
+		direction = new Vec2(1, 0);
 		
 	}
 

@@ -9,7 +9,7 @@ public class Flea extends GameObject{
 	public Flea(int x, int y, int wid, int ht, int speed, int health) {
 		super(x, y, wid, ht, speed, health);
 		openImage("flea");
-		direction = 180; 
+		direction = new Vec2(0, 1);
 	}
 
 	@Override

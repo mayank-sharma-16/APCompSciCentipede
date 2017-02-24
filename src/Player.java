@@ -14,7 +14,7 @@ public class Player extends GameObject
 		openImage("player");
 	}
 
-	public void setMoving(int direction, int speed)
+	public void setMoving(Vec2 direction, int speed)
 	{
 		this.direction = direction;
 		this.speed = speed;
