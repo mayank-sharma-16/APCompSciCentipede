@@ -12,15 +12,14 @@ public class MovingObjectsGameLauncher
 	{
 		JFrame gameFrame = new JFrame();
 		Map<String, String> environMap = System.getenv();
-		System.out.println(environMap.keySet());
+		//System.out.println(environMap.keySet());
 		
 		//Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-		Dimension d = new Dimension(1280, 720);
+		Dimension d = new Dimension(CentipedeGameMap.GAME_WIDTH, CentipedeGameMap.GAME_HEIGHT);
 		MovingObjectsPanel mop = new MovingObjectsPanel(d);
 		gameFrame.add(mop);
 		gameFrame.pack();
 		gameFrame.setVisible(true);
-		gameFrame.setSize(d);
 		gameFrame.setDefaultCloseOperation(gameFrame.EXIT_ON_CLOSE);
 	}
 

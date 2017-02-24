@@ -33,6 +33,21 @@ public abstract class GameMap
 	
 	public void tick()
 	{
+		// Checks collision between every pair of objects
+		for (int i = 0; i < gameObjects.size(); i++)
+		{
+			for (int j = i + 1; j < gameObjects.size(); j++)
+			{
+				GameObject go1 = gameObjects.get(i);
+				GameObject go2 = gameObjects.get(j);
+				if (go1.checkCollision(go2))
+				{
+					go1.onCollide(go2);
+					go2.onCollide(go1);
+				}
+			}
+		}
+
 		for (GameObject go : gameObjects)
 		{
 			go.tick();

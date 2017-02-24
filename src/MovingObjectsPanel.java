@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.AbstractAction;
 import javax.swing.JPanel;
@@ -25,10 +27,12 @@ public class MovingObjectsPanel extends JPanel
 	public MovingObjectsPanel(Dimension dim)
 	{
 		this.dimension = dim;
+
 		this.setPreferredSize(dimension);
 		this.setBackground(background);
 
 		setUpKeyMappings();
+		setUpMouseListener();
 		makeGameMap();
 		setupTimer();
 
@@ -82,7 +86,6 @@ public class MovingObjectsPanel extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				// TODO Auto-generated method stub
 				gm.shoot();
 			}
 		});
@@ -91,7 +94,6 @@ public class MovingObjectsPanel extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				// TODO Auto-generated method stub
 				gm.shoot();
 			}
 		});
@@ -100,7 +102,6 @@ public class MovingObjectsPanel extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				// TODO Auto-generated method stub
 				gm.shoot();
 			}
 		});
@@ -109,7 +110,6 @@ public class MovingObjectsPanel extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				// TODO Auto-generated method stub
 				gm.shoot();
 			}
 		});
@@ -118,13 +118,39 @@ public class MovingObjectsPanel extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				// TODO Auto-generated method stub
 				gm.shoot();
 			}
 		});
 		this.requestFocusInWindow();
 	}
 
+	private void setUpMouseListener()
+	{
+		// DEBUG ONLY
+		this.addMouseListener(new MouseListener()
+		{
+			@Override
+			public void mouseClicked(MouseEvent e) {}
+
+			@Override
+			public void mousePressed(MouseEvent e)
+			{
+				int x = e.getX() / CentipedeGameMap.GRID_SIZE;
+				int y = e.getY() / CentipedeGameMap.GRID_SIZE;
+
+				gm.add(new Mushroom(x * CentipedeGameMap.GRID_SIZE, y * CentipedeGameMap.GRID_SIZE, CentipedeGameMap.GRID_SIZE, CentipedeGameMap.GRID_SIZE, 1));
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {}
+
+			@Override
+			public void mouseExited(MouseEvent e) {}
+		});
+	}
 	
 
 }

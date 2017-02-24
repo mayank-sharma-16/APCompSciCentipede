@@ -10,6 +10,7 @@ public class Mushroom extends GameObject
 	public Mushroom(int x, int y, int width, int height, int health)
 	{
 		super(x, y, width, height, 0, health);
+		openImage("mushroom");
 	}
 
 	public void move()
