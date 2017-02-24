@@ -1,5 +1,4 @@
 import java.awt.Graphics;
-import java.awt.event.KeyEvent;
 
 public class CentipedeGameMap extends GameMap
 {
@@ -69,22 +68,22 @@ public class CentipedeGameMap extends GameMap
 		int angle = 0;
 		int num = 0;
 
-		if (inputManager.getInput("up"))
+		if (im.getInput("up"))
 		{
 			angle += 0;
 			num++;
 		}
-		if (inputManager.getInput("right"))
+		if (im.getInput("right"))
 		{
 			angle += 90;
 			num++;
 		}
-		if (inputManager.getInput("left"))
+		if (im.getInput("left"))
 		{
 			angle -= 90;
 			num++;
 		}
-		if (inputManager.getInput("down"))
+		if (im.getInput("down"))
 		{
 			if (angle > 0)
 				angle += 180;

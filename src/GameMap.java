@@ -1,7 +1,5 @@
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,13 +9,13 @@ public abstract class GameMap
 
 	protected List<GameObject> gameObjects;
 
-	protected InputManager inputManager;
+	protected InputManager im;
 
 	private Image backgroundImage;
 	
 	public GameMap(InputManager inputManager)
 	{
-		this.inputManager = inputManager;
+		this.im = inputManager;
 		gameObjects = new ArrayList();
 		openBackgroundImage();
 	}
