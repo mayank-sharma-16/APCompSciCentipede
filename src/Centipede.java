@@ -28,6 +28,7 @@ public class Centipede extends GameObject
 		{
 			if (y / height == previousRow + 1)
 			{
+				y = (y / height) * height;
 				if (isLeft)
 				{
 					direction = 270;

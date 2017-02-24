@@ -9,12 +9,15 @@ import java.util.List;
 public abstract class GameMap
 {
 
-	private List<GameObject> gameObjects;
+	protected List<GameObject> gameObjects;
+
+	protected InputManager inputManager;
 
 	private Image backgroundImage;
 	
-	public GameMap()
+	public GameMap(InputManager inputManager)
 	{
+		this.inputManager = inputManager;
 		gameObjects = new ArrayList();
 		openBackgroundImage();
 	}
@@ -67,16 +70,6 @@ public abstract class GameMap
 		gameObjects.add(go);
 	}
 
-	public void playerMove(int i)
-	{
-		
-	}
-
-	public void shoot()
-	{
-		System.out.println("working");
-	}
-	
 	public void clean()
 	{
 		for (int i = gameObjects.size() - 1; i >= 0; i--)

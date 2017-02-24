@@ -17,19 +17,21 @@ import javax.swing.Timer;
 
 public class MovingObjectsPanel extends JPanel
 {
-	
 	public static Dimension dimension;// = new Dimension(800,600);
 
 	private GameMap gm;
 	private Color background = new Color(0, 0, 0);
 	private Timer timer;
-	
+	private InputManager inputManager;
+
 	public MovingObjectsPanel(Dimension dim)
 	{
 		this.dimension = dim;
 
 		this.setPreferredSize(dimension);
 		this.setBackground(background);
+
+		inputManager = new InputManager();
 
 		setUpKeyMappings();
 		setUpMouseListener();
@@ -40,7 +42,7 @@ public class MovingObjectsPanel extends JPanel
 
 	private void makeGameMap()
 	{
-		gm = new CentipedeGameMap();
+		gm = new CentipedeGameMap(inputManager);
 	}
 
 	private void setupTimer()
@@ -63,6 +65,8 @@ public class MovingObjectsPanel extends JPanel
 		gm.draw(g);
 	}
 
+
+
 	private void setUpKeyMappings()
 	{
 		// maps keys with actions...
@@ -70,57 +74,61 @@ public class MovingObjectsPanel extends JPanel
 		// In this case I mapped the space bar key to the action named "shoot"
 		// Whenever someone hits the Space Bar the action shoot is sent out
 
+		String[] inputNames = {"shoot", "up", "down", "left", "right"};
+
 		this.getInputMap().put(KeyStroke.getKeyStroke("SPACE"), "shoot");
+
 		this.getInputMap().put(KeyStroke.getKeyStroke("UP"), "up");
 		this.getInputMap().put(KeyStroke.getKeyStroke("DOWN"), "down");
 		this.getInputMap().put(KeyStroke.getKeyStroke("LEFT"), "left");
 		this.getInputMap().put(KeyStroke.getKeyStroke("RIGHT"), "right");
+
+		this.getInputMap().put(KeyStroke.getKeyStroke("released UP"), "released up");
+		this.getInputMap().put(KeyStroke.getKeyStroke("released DOWN"), "released down");
+		this.getInputMap().put(KeyStroke.getKeyStroke("released LEFT"), "released left");
+		this.getInputMap().put(KeyStroke.getKeyStroke("released RIGHT"), "released right");
+
+		for (String name : inputNames)
+		{
+			inputManager.addInput(name);
+		}
 
 		//  This associates the command shoot with some action.  In this 
 		// case, the action triggers a shoot command invoked on my GameMap.  In general, whatever 
 		// goes in the actionPerformed method will be executed when a shoot command
 		// is sent...
 
+		// Shoot
 		this.getActionMap().put("shoot", new AbstractAction()
 		{
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				gm.shoot();
+				inputManager.setInput("shoot", true);
 			}
 		});
-		this.getActionMap().put("up", new AbstractAction()
+
+		for (String name : inputNames)
 		{
-			@Override
-			public void actionPerformed(ActionEvent e)
+			this.getActionMap().put(name, new AbstractAction()
 			{
-				gm.shoot();
-			}
-		});
-		this.getActionMap().put("down", new AbstractAction()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					inputManager.setInput(name, true);
+				}
+			});
+
+			this.getActionMap().put("released " + name, new AbstractAction()
 			{
-				gm.shoot();
-			}
-		});
-		this.getActionMap().put("left", new AbstractAction()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				gm.shoot();
-			}
-		});
-		this.getActionMap().put("right", new AbstractAction()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				gm.shoot();
-			}
-		});
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					inputManager.setInput(name, false);
+				}
+			});
+		}
+
 		this.requestFocusInWindow();
 	}
 

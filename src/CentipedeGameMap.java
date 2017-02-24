@@ -11,10 +11,11 @@ public class CentipedeGameMap extends GameMap
 	public static final int GAME_HEIGHT = GRID_HEIGHT * GRID_SIZE;
 
 	private int LIMIT = 300;
-	Player player;
+	private Player player;
 	
-	public CentipedeGameMap()
+	public CentipedeGameMap(InputManager inputManager)
 	{
+		super(inputManager);
 		initBorder();
 		initMushrooms();
 		initPlayer();
@@ -38,23 +39,71 @@ public class CentipedeGameMap extends GameMap
 
 	private void initBorder()
 	{
-		add(new Border(-10,         0, 10, GAME_HEIGHT)); // Left border
-		add(new Border(GAME_WIDTH,  0, 10, GAME_HEIGHT)); // Right border
+		add(new Border(-10, 0, 10, GAME_HEIGHT)); // Left border
+		add(new Border(GAME_WIDTH, 0, 10, GAME_HEIGHT)); // Right border
 
-		add(new Border(0, -10,          GAME_WIDTH, 10)); // Top border
-		add(new Border(0, GAME_HEIGHT,  GAME_WIDTH, 10)); // Bottom border
+		add(new Border(0, -10, GAME_WIDTH, 10)); // Top border
+		add(new Border(0, GAME_HEIGHT, GAME_WIDTH, 10)); // Bottom border
 	}
 
 	private void initPlayer()
 	{
-		// player = new Player(400, 500, 20, 20, 0, 1);
+		player = new Player(GAME_WIDTH / 2, GAME_HEIGHT - GRID_SIZE, GRID_SIZE, GRID_SIZE, 0, 1);
+		add(player);
 	}
 	
 	private void initCentipede()
 	{
 		for (int i = 0; i < 10; i++)
 		{
-			add(new Centipede(GRID_SIZE * i, GRID_SIZE, GRID_SIZE, GRID_SIZE, 4, 1));
+			add(new Centipede(GRID_SIZE * (i + GRID_WIDTH / 2), GRID_SIZE, GRID_SIZE, GRID_SIZE, 5, 1));
+		}
+
+	}
+
+	@Override
+	public void tick()
+	{
+		super.tick();
+
+		int angle = 0;
+		int num = 0;
+
+		if (inputManager.getInput("up"))
+		{
+			angle += 0;
+			num++;
+		}
+		if (inputManager.getInput("right"))
+		{
+			angle += 90;
+			num++;
+		}
+		if (inputManager.getInput("left"))
+		{
+			angle -= 90;
+			num++;
+		}
+		if (inputManager.getInput("down"))
+		{
+			if (angle > 0)
+				angle += 180;
+			else
+				angle -= 180;
+			num++;
+		}
+
+		if (num == 1)
+		{
+			player.setMoving(angle, 5);
+		}
+		else if (num == 2)
+		{
+			player.setMoving(angle / 2, 5);
+		}
+		else
+		{
+			player.setMoving(0, 0);
 		}
 
 	}
@@ -67,14 +116,7 @@ public class CentipedeGameMap extends GameMap
 	@Override
 	public void openBackgroundImage()
 	{
-		// TODO Auto-generated method stub
-		
+
 	}
 	
-	@Override
-	public void playerMove(int i)
-	{
-		
-	}
-
 }
