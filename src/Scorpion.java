@@ -16,7 +16,7 @@ public class Scorpion extends GameObject {
 	}
 
 	@Override
-	protected void onCollide() {
+	protected void onCollide(GameObject go) {
 		// TODO Auto-generated method stub
 		
 	}

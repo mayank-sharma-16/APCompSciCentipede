@@ -17,8 +17,7 @@ public class Spiders extends GameObject{
 	}
 
 	@Override
-	protected void onCollide() {
-		// TODO Auto-generated method stub
-		
+	protected void onCollide(GameObject go) {
+
 	}
 }
