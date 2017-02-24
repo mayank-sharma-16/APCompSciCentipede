@@ -34,7 +34,7 @@ public class Centipede extends GameObject{
 	}
 
 	@Override
-	protected void onCollide() {
+	protected void onCollide(GameObject go) {
 		direction = 180;
 		isLeft = !isLeft;
 		y += 1;

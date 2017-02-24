@@ -34,7 +34,7 @@ public abstract class GameObject implements MovingObject {
 		y += (int) (Math.cos(Math.toRadians(direction)) * speed);
 	}
 	
-	protected abstract void onCollide();
+	protected abstract void onCollide(GameObject go);
 
 	protected void openImage(String imageName) {
 		Image myImage = null;
@@ -52,8 +52,7 @@ public abstract class GameObject implements MovingObject {
 
 	@Override
 	public Rectangle getCollisionBox() {
-		// TODO Auto-generated method stub
-		Rectangle rect = new Rectangle(x + (int) (Math.sin(Math.toRadians(direction)) * speed), 
+		Rectangle rect = new Rectangle(x + (int) (Math.sin(Math.toRadians(direction)) * speed),
 				y + (int) (Math.cos(Math.toRadians(direction)) * speed), width, height);
 		return rect;
 	}
