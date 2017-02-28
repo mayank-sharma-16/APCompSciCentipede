@@ -10,10 +10,15 @@ public class Scorpion extends GameObject {
 		super(x, y, wid, ht, speed, health);
 		openImage("scorpion");
 		
-		direction = new Vec2(1, 0);
+		int arb = (int) (Math.random()*2);
+		if (arb == 1){
+			direction = new Vec2(1, 0);
+		}
+		else{
+			direction = new Vec2(-1,0);
+		}
 		
 	}
-
 	@Override
 	protected void onCollide(GameObject go) {
 

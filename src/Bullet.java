@@ -14,7 +14,6 @@ public class Bullet extends GameObject {
 
 	@Override
 	protected void onCollide(GameObject go) {
-		go.hurt();
 		hurt();
 	}
 

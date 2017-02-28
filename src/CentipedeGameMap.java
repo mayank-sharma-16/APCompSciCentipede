@@ -21,6 +21,9 @@ public class CentipedeGameMap extends GameMap
 	}
 
 	
+	
+
+
 	private void initMushrooms()
 	{
 
@@ -97,6 +100,22 @@ public class CentipedeGameMap extends GameMap
 		{
 			im.setInput("shoot", false);
 			gameObjects.add(new Bullet(player.getX(), player.getY(), 2, 5, 5, 1));
+		}
+		
+		
+		int x = (int) (Math.random()*1000);
+		if (x == 1){
+			int more = (int) (Math.random()*20);
+			gameObjects.add(new Scorpion(-GRID_SIZE, more*GRID_SIZE, GRID_SIZE, GRID_SIZE, 5, 1));
+			
+		}
+		else if (x == 2){
+			int more = (int) (Math.random()*20);
+			gameObjects.add(new Scorpion(GRID_WIDTH*GRID_SIZE, more*GRID_SIZE, GRID_SIZE, GRID_SIZE, 5, 1));
+		}
+		else if (x == 0){
+			int more = (int) (Math.random()*GRID_WIDTH);
+			gameObjects.add(new Flea(GRID_SIZE*more, GRID_HEIGHT, GRID_SIZE, GRID_SIZE, 5, 1));
 		}
 		
 
